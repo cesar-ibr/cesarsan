@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="stylesheet" href="../style.css">
+  <title>Check Syntax</title>
+</head>
+
+<body class="bg-body">
+  <div class="container m-auto px-2 py-6 max-w-screen-md">
+    <h1 class="text-2xl py-4">Check Syntax</h1>
+    <div class="bg-white p-6 rounded-lg">
+      <p>Check Error Syntax</p>
+      <p>For
+      <pre>str = '{(0)}'</pre> the function should return false</p>
+    </div>
+  </div>
+  <script>
+    function checkErrorSyntax(str = "") {
+      const bracket = {
+        "{": "}",
+        "(": ")",
+        "[": "]"
+      };
+      if (str.length === 1 && !!bracket[str]) {
+        return true;
+      }
+      let i = 0,
+        j = str.length - 1;
+      let error = false;
+      for (; i <= j; i++, j--) {
+        const _char = str[i];
+        const isCharBracket = !!bracket[_char];
+        if (isCharBracket && bracket[_char] !== str[j]) {
+          error = true;
+        }
+        if (i == j || error) {
+          return error;
+        }
+      }
+      return error;
+    }
+  </script>
+
+</body>
+
+</html>

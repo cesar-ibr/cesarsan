@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="stylesheet" href="../style.css">
+  <title>Months</title>
+</head>
+
+<body class="bg-body">
+  <div class="container m-auto px-2 py-6 max-w-screen-md">
+    <h1 class="text-2xl py-4">Months</h1>
+    <div class="bg-white p-6 rounded-lg">
+      <div class="brinza-task-description">
+        <p>John has always dreamed of taking a vacation on Hawaii. He has decided to make his dream come true during the
+          next holiday period, and he would like to spend as much time there as possible.</p>
+        <p>The problem is that there is only one plane per week connecting Hawaii with the city where John lives. The
+          plane departs every Monday and arrives every Sunday. There is no other way to get to Hawaii and back. It means
+          that John can spend only whole weeks in Hawaii.</p>
+        <p>John knows in which month his vacation starts and in which month it ends. His vacation period starts on the
+          first day of the beginning month and ends on the last day of the ending month. John also knows the year in
+          which
+          his vacation takes place.</p>
+        <p>For example, if John's vacation lasts from July to September in 2008, then it starts on 1st July 2008 and
+          ends
+          on 30th September 2008.</p>
+        <p>Your task is to calculate how many weeks John will spend in Hawaii, given:</p>
+        <blockquote>
+          <ul style="margin: 10px;padding: 0px;">
+            <li>the month when the vacation begins;</li>
+            <li>the month when the vacation ends;</li>
+            <li>the year when the vacation takes place;</li>
+            <li>the day of the week for 1st January in the vacation year (for convenience).</li>
+          </ul>
+        </blockquote>
+        <p>The names of the days of the week are: <tt style="white-space:pre-wrap">Monday, Tuesday, Wednesday, Thursday,
+            Friday, Saturday, Sunday</tt>. The names of the months are: <tt style="white-space:pre-wrap">January,
+            February, March, April, May, June, July, August, September, October, November, December</tt>. The lengths of
+          the months are, respectively: <tt style="white-space:pre-wrap">31, 28 (or 29 in a leap year), 31, 30, 31, 30,
+            31, 31, 30, 31, 30, 31</tt> days.</p>
+        <p>Pay attention to leap years; you should also consider them. The year of the vacation will be a number between
+          2001 and 2099, inclusive, and you can tell that the year is a leap year if it's divisible by 4.</p>
+        <p>Write a function:</p>
+        <blockquote>
+          <p style="font-family: monospace; font-size: 9pt; display: block; white-space: pre-wrap"><tt>function
+              solution(Y, A, B, W);</tt></p>
+        </blockquote>
+        <p>that, given an integer Y and three non-empty strings A, B and W, denoting the year of the vacation, the
+          beginning month, the ending month and the day of the week for 1st January of that year, returns the maximum
+          number of weeks that John can spend in Hawaii.</p>
+        <p>For example, given Y = 2014, A = "<tt style="white-space:pre-wrap">April</tt>", B = "<tt
+            style="white-space:pre-wrap">May</tt>" and W = "<tt style="white-space:pre-wrap">Wednesday</tt>", the
+          function
+          should return 7, since John can leave his city on April 7th and come back on May 25th, so he will spend 7
+          weeks
+          on Hawaii (the weeks beginning, respectively, on April 7th, 14th, 21st, 28th and May 5th, 12th, 19th).</p>
+        <img class="inline-description-image"
+          src="https://codility-frontend-prod.s3.amazonaws.com/media/task_static/whole_weeks/c7692c9b186bd572cf38d6a3e5a34f69/static/images/whole_weeks.png">
+        <p>Assume that:</p>
+        <blockquote>
+          <ul style="margin: 10px;padding: 0px;">
+            <li>Y is an integer within the range [<span class="number">2,001</span>..<span class="number">2,099</span>];
+            </li>
+            <li>A and B are valid month names;</li>
+            <li>month B does not preceed month A;</li>
+            <li>W is a valid weekday name;</li>
+            <li>W is the correct weekday for January 1st of year Y in the actual calendar.</li>
+          </ul>
+        </blockquote>
+        <p>In your solution, focus on <b><b>correctness</b></b>. The performance of your solution will not be the focus
+          of
+          the assessment.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
+  <link rel="stylesheet" href="../style.css">
+  <title>Search Pattern</title>
+</head>
+<body class="bg-body">
+  <div class="container m-auto px-2 py-6 max-w-screen-md">
+    <h1 class="text-2xl py-4">Search Pattern</h1>
+    <div class="bg-white rounded-lg p-6">
+      <p class="pb-4">
+        Given string1 and string2 look for a match of string2 in string1.
+        Return true if there is a match otherwise return false.
+      </p>
+      <p class="pt-4">Pseudo Code</p>
+      <pre>
+        if s2 length bigger than s1 return false
+        pointer = 0
+        for char in s1
+          if char equals s2[pointer]
+            if pointer reached the end of s2 return true
+            else pointer = pointer + 1
+          else pointer = 0
+        endfor
+        return pointer == s2.length
+      </pre>
+      <p class="pt-4">Javascript Code</p>
+      <pre>
+        function searchPattern (s1 = '', s2 = '') {
+          if (s2.length > s1.length || !s2) {
+            return false;
+          }
+          let pointer = 0;
+          for (c of s1) {
+            if (c === s2.charAt(pointer)) {
+              if ((pointer + 1) === s2.length) {
+                return true;
+              } else {
+                pointer++;
+              }
+            } else {
+              pointer = 0;
+            }
+          }
+          return pointer === s2.length;
+        }
+      </pre>
+      <button class="p-4 rounded-full text-white bg-orange" onclick="runCode()">Run Code</button>
+    </div>
+  </div>
+  <script>
+    function solution(s1 = '', s2 = '') {
+      if (s2.length > s1.length || !s2) {
+        return false;
+      }
+      let pointer = 0;
+      for (c of s1) {
+        if (c === s2[pointer]) {
+          if ((pointer + 1) === s2.length) {
+            return true;
+          } else {
+            pointer++;
+          }
+        } else {
+          pointer = 0;
+        }
+      }
+      return pointer === s2.length;
+    }
+
+    function runCode() {
+      const text = prompt('Enter some text');
+      const str = prompt('Enter term to search for');
+      const result = solution(text, str);
+      console.log('Result: ', result);
+      alert(`Result: ${result}`);
+    }
+
+  </script>
+</body>
+</html>

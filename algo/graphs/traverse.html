@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Traverse Graph</title>
+</head>
+<body>
+  <p id="result" style="padding: 10px;margin: 10px; border-radius: 10px; border: solid 1px #CCC"></p>
+  <script>
+    // Building and Searching a Graph
+    const edges = [ 
+      [0,1],
+      [0,4],
+      [0,5],
+      [1,4],
+      [1,3],
+      [3,2],
+      [3,4],
+      [2,1]
+    ];
+    const Graph = {};
+    const createNode = () => ({ visited: false, kids: [] });
+
+    for (const [u,v] of edges) {
+      if (!Graph[u]) {
+        Graph[u] = createNode();
+      }
+      if (!Graph[v]) {
+        Graph[v] = createNode();
+      }
+      Graph[u].kids.push(v);
+    }
+
+    // Search Graph
+    const visitedNodes = [];
+    Graph[0].visited = true;
+    const Q = [0];
+    
+    while (Q.length > 0) {
+      const node = Q.pop();
+      visitedNodes.push(node);
+      for (const nodeRef of Graph[node].kids) {
+        const kidNode = Graph[nodeRef];
+        if (!kidNode.visited) {
+          kidNode.visited = true;
+          Q.push(nodeRef);
+        }
+      }
+    }
+
+
+    // Show result
+    const result = visitedNodes.join(' ');
+    document.getElementById('result').innerText = result;
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Traverse Graph</title>
+</head>
+<body>
+  <p id="result" style="padding: 10px;margin: 10px; border-radius: 10px; border: solid 1px #CCC"></p>
+  <script>
+    // Graph structure
+    const Graph = new Map();
+
+    function addNode(node) {
+      if (!Graph.has(node)) {
+        Graph.set(node, new Set());
+      }
+    }
+
+    function addEdge(nodeA, nodeB) {
+      if (Graph.has(nodeA) && Graph.has(nodeB)) {
+        // Directed graph
+        Graph.get(nodeA).add(nodeB);
+      }
+    }
+
+    // Build Graph
+    const data = [
+      ['You', new Set(['Bob', 'Claire', 'Alice'])],
+      ['Claire', new Set(['Thom', 'Jonny'])],
+      ['Bob', new Set(['Anuj', 'Peggy'])],
+      ['Alice', new Set(['Peggy'])],
+      ['Thom', new Set()],
+      ['Jonny', new Set()],
+      ['Peggy', new Set()],
+      ['Anuj', new Set()]
+    ];
+
+    const G = new Map(data);
+
+    /**
+     * Breath-First Search
+     * This implementation looks for a node ending with
+     * the char 'm'
+    */
+    function bfs (start) {
+      const Queue = [start];
+      while (Queue.length > 0) {
+        const node = Queue.shift();
+        if (node.endsWith('m')) {
+          console.log('Node Found! => ', node);
+          return `Node Found! => ${node}`;
+        }
+        // Add neighbours
+        Queue.push(...G.get(node));
+      }
+      return 'Node not found :(';
+    }
+
+
+    const result = bfs('You');
+    document.getElementById('result').innerText = result;
+  </script>
+</body>
+</html>
