@@ -1,26 +1,28 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
     future: {},
     purge: ['./index.html'],
     theme: {
         colors: {
-            white: '#FFFFFF',
-            body: '#E1E1F3',
-            purple: '#38178F',
+            transparent: 'transparent',
+            current: 'currentColor',
+            black: colors.black,
+            white: colors.white,
             gray: {
                 DEFAULT: '#2D3043',
-                dark: '#222433'
+                dark: '#222433',
             },
             blue: {
                 DEFAULT: '#2B98E1',
-                dark: '#000624'
+                dark: '#000624',
             },
-            pink: '#D1316C',
+            indigo: colors.indigo,
+            purple: colors.purple,
+            pink: colors.pink,
+            red: colors.rose,
+            yellow: colors.amber,
             green: '#519F20',
-            orange: {
-                light: '#E2975C',
-                DEFAULT: '#F95F59'
-            },
-            yellow: '#FBC12D',
         },
     },
     variants: {},
