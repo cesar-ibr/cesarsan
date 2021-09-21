@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview"
+    "build-site": "vite build && vuepress build blog",
+    "serve": "vite preview",
+    "blog:dev": "vuepress dev blog",
+    "blog:build": "vuepress build blog"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.7.0",
@@ -12,7 +14,8 @@
     "autoprefixer": "^10.2.6",
     "postcss": "^8.3.0",
     "tailwindcss": "^2.1.2",
-    "vite": "^2.3.4"
+    "vite": "^2.3.4",
+    "vuepress-vite": "^2.0.0-beta.26"
   },
   "dependencies": {
     "vue": "^3.2.12"
