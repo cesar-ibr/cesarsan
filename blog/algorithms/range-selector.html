@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Range Selector</title>
+</head>
+<body>
+  <h1>Range Selector</h1>
+  <input
+    type="range"
+    name="range"
+    id="input-range"
+    min="0"
+    max="50">
+  <p id="text-range"></p>
+
+  <button onclick="rangeComponent.number = 20">Set 20</button>
+  <button onclick="rangeComponent.number = 50">Set 50</button>
+
+
+  <script>
+    // Define Object
+    const rangeComponent = {
+      inputRef: document.getElementById('input-range'),
+      textRef: document.getElementById('text-range'),
+      init() {
+        this.number = 5;
+        this.inputRef.addEventListener('change', () => {
+          this.number = this.inputRef.value;
+        })
+      },
+    };
+    // Define Accessor Descriptor
+    Object.defineProperty(rangeComponent, 'number', {
+      set(newValue) {
+        this.inputRef.value = newValue;
+        this.textRef.innerText = `Value: ${newValue}`;
+      }
+    })
+
+    // Init Component
+    rangeComponent.init()
+  </script>
+</body>
+</html>

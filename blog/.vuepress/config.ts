@@ -5,8 +5,8 @@ import { sidebarLinks } from './nav-links';
 
 export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
   lang: 'en-US',
-  title: 'The Eccentric Programmer',
-  description: 'Articles and Stories about Web Programming',
+  title: 'Cesar Sanchez | Dev Blog',
+  description: 'Articles and stories about Web Programming, Open Source, Culture and Technology',
   themeConfig: {
     sidebar: sidebarLinks,
   },
