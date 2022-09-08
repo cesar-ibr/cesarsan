@@ -1,0 +1,61 @@
+name: Test CI Cache
+
+env:
+  nodeJs: '16.13.0'
+  CACHE_DIR: packages/docs
+  CACHE_KEY: app-cache
+  YARN_HASH: build
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  cache-ubuntu:
+    name: Generate Hash (ubuntu)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # - name: Use Node.js v${{ env.nodeJs }}
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: ${{ env.nodeJs }}
+
+      # - name: Save Cache
+      #   uses: actions/cache@v3
+      #   env:
+      #     CACHE_KEY: ${{ env.CACHE_KEY }}-build-${{ hashFiles('**/yarn.lock') }}
+      #   with:
+      #     path: ${{ env.CACHE_DIR }}
+      #     key: ${{ env.CACHE_KEY }}
+      - name: Get Hash
+        env:
+          YARN_HASH: yarn-hash-${{ hashFiles('**/yarn.lock') }}
+        run: echo $YARN_HASH
+
+  cache-win:
+    name: Generate Hash (windows)
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # - name: Use Node.js v${{ env.nodeJs }}
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: ${{ env.nodeJs }}
+
+      # - name: Get Cache
+      #   uses: actions/cache@v3
+      #   env:
+      #     CACHE_KEY: ${{ env.CACHE_KEY }}-build-${{ hashFiles('**/yarn.lock') }}
+      #   with:
+      #     path: ${{ env.CACHE_DIR }}
+      #     key: ${{ env.CACHE_KEY }}
+
+      - name: Get Hash
+        env:
+          YARN_HASH: yarn-hash-${{ hashFiles('**/yarn.lock') }}
+        run: echo $YARN_HASH
