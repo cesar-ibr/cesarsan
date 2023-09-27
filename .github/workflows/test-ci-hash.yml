@@ -1,9 +1,7 @@
-name: Test CI Cache
+name: Test CI Hash
 
 env:
   nodeJs: '16.13.0'
-  CACHE_DIR: packages/docs
-  CACHE_KEY: app-cache
   YARN_HASH: build
 
 on:
