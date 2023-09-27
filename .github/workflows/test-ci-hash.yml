@@ -1,0 +1,34 @@
+name: Test CI Hash
+
+env:
+  nodeJs: '16.13.0'
+  YARN_HASH: build
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  cache-ubuntu:
+    name: Generate Hash (ubuntu)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get Hash
+        env:
+          YARN_HASH: yarn-hash-${{ hashFiles('**/yarn.lock') }}
+        run: echo $YARN_HASH
+
+  cache-win:
+    name: Generate Hash (windows)
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get Hash
+        env:
+          YARN_HASH: yarn-hash-${{ hashFiles('**/yarn.lock') }}
+        run: echo $env:YARN_HASH
